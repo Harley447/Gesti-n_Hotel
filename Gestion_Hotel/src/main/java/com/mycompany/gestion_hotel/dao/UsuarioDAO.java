@@ -6,20 +6,22 @@ import java.sql.*;
 
 public class UsuarioDAO {
 
-    private ConexionBD conexion;
+    private final ConexionBD conexionBD;
 
-    public UsuarioDAO() {
-        conexion = new ConexionBD();
+    // ✅ Constructor que recibe la conexión
+    public UsuarioDAO(ConexionBD conexionBD) {
+        this.conexionBD = conexionBD;
     }
 
+    // ✅ Método de autenticación
     public Usuario autenticar(String correo, String contrasena) {
         Usuario usuario = null;
-        String query = "SELECT * FROM Usuarios WHERE correo = ? AND contrasena = ?";
+        String sql = "SELECT * FROM Usuarios WHERE correo = ? AND contrasena = ?";
 
-        try (PreparedStatement ps = conexion.getConnection().prepareStatement(query)) {
-            ps.setString(1, correo);
-            ps.setString(2, contrasena);
-            ResultSet rs = ps.executeQuery();
+        try (PreparedStatement stmt = conexionBD.getConnection().prepareStatement(sql)) {
+            stmt.setString(1, correo);
+            stmt.setString(2, contrasena);
+            ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 usuario = new Usuario(
@@ -30,9 +32,10 @@ public class UsuarioDAO {
                     rs.getString("rol")
                 );
             }
+
             rs.close();
         } catch (SQLException e) {
-            System.out.println("Error en autenticación: " + e.getMessage());
+            System.out.println("Error al autenticar usuario: " + e.getMessage());
         }
 
         return usuario;

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.gestion_hotel.ui.GenerarReporteController">
+
+    <top>
+        <HBox spacing="12" >
+            <Label text="Generar Reporte" style="-fx-font-size:18px; -fx-font-weight:bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" >
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Fecha inicio:"/>
+                <DatePicker fx:id="dpFechaInicio"/>
+                <Label text="Fecha fin:"/>
+                <DatePicker fx:id="dpFechaFin"/>
+                <Button text="Consultar" fx:id="btnConsultar" onAction="#consultarTransacciones"/>
+                <Button text="Guardar Reporte" fx:id="btnGuardar" onAction="#guardarReporte"/>
+            </HBox>
+
+            <TableView fx:id="tvTransacciones" prefHeight="360">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
+                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="140"/>
+                    <TableColumn fx:id="colMonto" text="Monto" prefWidth="120"/>
+                    <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="320"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="20" alignment="CENTER_RIGHT">
+                <VBox>
+                    <Label text="Total Ingresos:"/>
+                    <Label fx:id="lblIngresos" style="-fx-font-weight:bold;"/>
+                </VBox>
+                <VBox>
+                    <Label text="Total Egresos:"/>
+                    <Label fx:id="lblEgresos" style="-fx-font-weight:bold;"/>
+                </VBox>
+                <VBox>
+                    <Label text="Balance:"/>
+                    <Label fx:id="lblBalance" style="-fx-font-weight:bold;"/>
+                </VBox>
+            </HBox>
+
+        </VBox>
+    </center>
+</BorderPane>

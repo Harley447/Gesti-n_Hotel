@@ -1,9 +1,7 @@
 /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/ui/HistorialController.java
-/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/AlertasInventarioDAO.java
 /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/dao/ProductoDAO.java
 /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/ui/InventarioController.java
 /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/modelo/Reporte.java
-/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/modelo/AlertasInventario.java
 /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/modelo/Producto.java
 /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/ui/LoginController.java
 /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/src/main/java/com/mycompany/gestion_hotel/ui/GenerarReporteController.java

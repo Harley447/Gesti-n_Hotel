@@ -1,5 +1,6 @@
 package com.mycompany.gestion_hotel.ui;
-
+import com.mycompany.gestion_hotel.dao.IngresosDAO;
+import com.mycompany.gestion_hotel.modelo.Ingresos;
 import com.mycompany.gestion_hotel.dao.ProductoDAO;
 import com.mycompany.gestion_hotel.modelo.Producto;
 import com.mycompany.gestion_hotel.servicio.WompiService;
@@ -25,7 +26,7 @@ public class VentasController implements Initializable
     private WompiService wompi = new WompiService();
 
     @FXML private ImageView imgQR;
-
+    private IngresosDAO ingresosDAO;
     @FXML private VBox contenedorProductos;
     @FXML private VBox contenedorCarrito;
     @FXML private Label lblTotal;
@@ -35,7 +36,7 @@ public class VentasController implements Initializable
     @FXML private CheckBox chkVitrina;
     @FXML private CheckBox chkNevera;
     @FXML private CheckBox chkHeladera;
-
+   
     private final ToggleGroup metodoPago = new ToggleGroup();
     private ProductoDAO productoDAO;
     private List<Producto> productosDisponibles;
@@ -64,7 +65,7 @@ public class VentasController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("VentasController inicializado");
-        
+        ingresosDAO = new IngresosDAO();
         // Inicializar componentes
         productoDAO = new ProductoDAO();
         productosDisponibles = new ArrayList<>();
@@ -380,70 +381,89 @@ public class VentasController implements Initializable
     }
 
     @FXML
-    private void finalizarVenta(ActionEvent event) {
-        String metodo = "";
-        if (rbEfectivo.isSelected()) {
-             metodo = "Efectivo";
-    
-        } 
-        else if (rbTransferencia.isSelected()) 
-        {
-            metodo = "Transferencia";
+private void finalizarVenta(ActionEvent event) {
+    // Validar que hay productos en el carrito
+    if (itemsCarrito.isEmpty()) {
+        mostrarAlerta("Error", "No hay productos en el carrito");
+        return;
+    }
+
+    String metodo = "";
+    if (rbEfectivo.isSelected()) {
+        metodo = "Efectivo";
+    } 
+    else if (rbTransferencia.isSelected()) {
+        metodo = "Transferencia";
+    }
+    else {
+        mostrarAlerta("Error", "Seleccione un método de pago");
+        return;
+    }
+
+    double total = calcularTotal();
+
+    if (metodo.equalsIgnoreCase("Efectivo")) {
+        // Registrar ingreso en efectivo
+        boolean ingresoRegistrado = registrarIngreso(metodo, total);
+        
+        if (ingresoRegistrado) {
+            mostrarAlerta("Venta Exitosa", "Venta en efectivo registrada\nTotal: $" + total);
+            limpiarCarrito();
+        } else {
+            mostrarAlerta("Error", "No se pudo registrar la venta");
         }
+    } 
+    else if (metodo.equalsIgnoreCase("Transferencia")) {
+        String transactionId = wompi.crearTransaccion(total);
 
-        if (metodo.equalsIgnoreCase("Efectivo")) 
-        {
-            System.out.println("Venta finalizada en efectivo. Total: " + lblTotal.getText());
-        } 
-        else if (metodo.equalsIgnoreCase("Transferencia")) 
-        {
-            double total = calcularTotal();
+        if (transactionId != null) {
+            String urlQR = wompi.obtenerQR(transactionId);
+            mostrarQR(urlQR);
 
-            // --------------------------
-            //     CAMBIO A WOMPI
-            // --------------------------
-            String transactionId = wompi.crearTransaccion(total);
+            mostrarAlerta("Pago por Transferencia", 
+                "Escanea el código QR para pagar.\nEl sistema verificará el pago automáticamente.");
 
-            if (transactionId != null) 
-            {
-                String urlQR = wompi.obtenerQR(transactionId);
-                mostrarQR(urlQR);
+            // Verificar estado en hilo
+            new Thread(() -> {
+                try {
+                    String estado = "PENDING";
+                    
+                    while (estado.equals("PENDING") || estado.equals("IN_PROGRESS")) {
+                        estado = wompi.consultarEstado(transactionId);
+                        System.out.println("Estado del pago: " + estado);
 
-                // Verificar estado en hilo
-                new Thread(() -> {
-                    try {
-                        String estado = "PENDING";
-                        
-                        while (estado.equals("PENDING") || estado.equals("IN_PROGRESS")) {
-                            estado = wompi.consultarEstado(transactionId);
-                            System.out.println("Estado del pago: " + estado);
-
-                            if (estado.equals("APPROVED")) {
-                                javafx.application.Platform.runLater(() ->
-                                    mostrarAlerta("Pago aprobado", "La transacción fue exitosa.")
-                                );
-                                break;
-                            }
-
-                            if (estado.equals("DECLINED") || estado.equals("ERROR")) {
-                                javafx.application.Platform.runLater(() ->
-                                    mostrarAlerta("Pago rechazado", "La transacción no fue aprobada.")
-                                );
-                                break;
-                            }
-
-                            Thread.sleep(4000);
+                        if (estado.equals("APPROVED")) {
+                            javafx.application.Platform.runLater(() -> {
+                                boolean ingresoRegistrado = registrarIngreso("Transferencia", total);
+                                if (ingresoRegistrado) {
+                                    mostrarAlerta("Pago Aprobado", "Pago confirmado\nTotal: $" + total);
+                                    limpiarCarrito();
+                                } else {
+                                    mostrarAlerta("Error", "Pago aprobado pero error en sistema");
+                                }
+                            });
+                            break;
                         }
 
-                    } catch (Exception ignored) {}
-                }).start();
-            } 
-            else 
-            {
-                System.out.println("No se pudo crear la transacción en Wompi");
-            }
+                        if (estado.equals("DECLINED") || estado.equals("ERROR")) {
+                            javafx.application.Platform.runLater(() ->
+                                mostrarAlerta("Pago Rechazado", "La transacción no fue aprobada.")
+                            );
+                            break;
+                        }
+
+                        Thread.sleep(4000);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        } else {
+            mostrarAlerta("Error", "No se pudo iniciar el pago con Wompi");
         }
     }
+}
     
     
     private void mostrarQR(String urlQR) 
@@ -475,4 +495,38 @@ public class VentasController implements Initializable
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+    
+    private boolean registrarIngreso(String metodoPago, double monto) {
+    try {
+        Ingresos ingreso = new Ingresos();
+        ingreso.setMetodoPago(metodoPago);
+        ingreso.setConcepto("Cafetería");
+        ingreso.setMonto(monto);
+
+        return ingresosDAO.insertarIngreso(ingreso);
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+private void actualizarStockProductos() {
+    try {
+        for (ItemCarrito item : itemsCarrito) {
+            Producto producto = item.producto;
+            int nuevaCantidad = producto.getCantidad() - item.cantidad;
+            productoDAO.actualizarStock(producto.getIdProducto(), nuevaCantidad);
+        }
+    } catch (Exception e) {
+        System.out.println("Error al actualizar stock: " + e.getMessage());
+    }
+}
+
+private void limpiarCarrito() {
+    actualizarStockProductos();
+    itemsCarrito.clear();
+    actualizarVistaCarrito();
+    imgQR.setImage(null);
+}
 }

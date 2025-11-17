@@ -5,12 +5,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConexionBD {
-    private final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private final String HOST = "localhost:3306";
-    private final String DB = "Hotel_Terrazas";
-    private final String URL = "jdbc:mysql://" + HOST + "/" + DB + "?serverTimezone=UTC";
-    private final String USERNAME = "root";
-    private final String PASSWORD = "Arley123!";
+   private final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+    private final String HOST = "shinkansen.proxy.rlwy.net:52841"; // host + puerto remoto
+    private final String DB = "railway";                           // nombre de la base en Railway
+    private final String URL = "jdbc:mysql://" + HOST + "/" + DB
+            + "?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+    private final String USERNAME = "root";                        // usuario remoto
+    private final String PASSWORD = "nAFbZmCqyWbaHJGQaFKdVDsEXsVaySsc"; // tu contraseña Railway
+
+    
     
     private Connection con = null;
     private Statement stmt = null;

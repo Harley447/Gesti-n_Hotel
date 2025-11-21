@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.mycompany.gestion_hotel.ui.RegistrarGastosController">
+   <top>
+      <VBox spacing="10" style="-fx-background-color: #f4f4f4;">
+         <Label text="Registrar Gastos" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;">
+            <padding>
+               <Insets top="20" left="20" bottom="10" right="20"/>
+            </padding>
+         </Label>
+         <Separator/>
+      </VBox>
+   </top>
+   
+   <center>
+      <VBox spacing="15" style="-fx-padding: 20;">
+         <!-- Formulario para agregar gastos -->
+         <GridPane hgap="10" vgap="15">
+            <columnConstraints>
+               <ColumnConstraints prefWidth="100"/>
+               <ColumnConstraints prefWidth="300"/>
+            </columnConstraints>
+            
+            <rowConstraints>
+               <RowConstraints prefHeight="30"/>
+               <RowConstraints prefHeight="30"/>
+               <RowConstraints prefHeight="80"/>
+            </rowConstraints>
+            
+            <Label text="Concepto:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cmbConcepto" promptText="Seleccione un concepto" 
+                     GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            
+            <Label text="Detalle:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtDetalle" promptText="Ingrese el detalle del gasto" 
+                      GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            
+            <Label text="Monto:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtMonto" promptText="0.00" 
+                      GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+         </GridPane>
+         
+         <!-- Botones de acción -->
+         <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Agregar Gasto" fx:id="btnAgregar" 
+                   style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"
+                   onAction="#agregarGasto"/>
+            <Button text="Limpiar" fx:id="btnLimpiar" 
+                   style="-fx-background-color: #95a5a6; -fx-text-fill: white;"
+                   onAction="#limpiarFormulario"/>
+         </HBox>
+         
+         <!-- Tabla de gastos -->
+         <Label text="Lista de Gastos:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+         <TableView fx:id="tblGastos" VBox.vgrow="ALWAYS">
+            <columns>
+               <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+               <TableColumn fx:id="colConcepto" text="Concepto" prefWidth="150"/>
+               <TableColumn fx:id="colDetalle" text="Detalle" prefWidth="200"/>
+               <TableColumn fx:id="colMonto" text="Monto" prefWidth="100"/>
+               <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120"/>
+               <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="100"/>
+            </columns>
+         </TableView>
+         
+         <!-- Total de gastos -->
+         <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Label text="Total de Gastos:" style="-fx-font-weight: bold;"/>
+            <Label fx:id="lblTotal" style="-fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+         </HBox>
+      </VBox>
+   </center>
+</BorderPane>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="25" alignment="TOP_CENTER" 
+      xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mycompany.gestion_hotel.ui.MenuRecepcionistaController"
+      style="-fx-background-color: linear-gradient(to bottom, #11998e, #38ef7d); -fx-padding: 30;">
+
+    <!-- Header con información del usuario -->
+    <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: rgba(255,255,255,0.1); -fx-background-radius: 15; -fx-padding: 15 25;">
+        <VBox spacing="5">
+            <Text text="Gestión Hotel - Recepcionista" 
+                  style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: white;"/>
+            <Label fx:id="lblUsuario" text="Bienvenida, Recepcionista" 
+                   style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);"/>
+        </VBox>
+    </HBox>
+
+    <!-- Título Principal -->
+    <VBox spacing="10" alignment="CENTER">
+        <Text text="Panel de Recepción" 
+              style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 2, 2);"/>
+        <Label text="Gestiona las operaciones de ventas e inventario" 
+               style="-fx-font-size: 16px; -fx-text-fill: rgba(255,255,255,0.8);"/>
+    </VBox>
+
+    <!-- Grid de 1 fila × 3 columnas para las opciones -->
+    <GridPane hgap="30" vgap="20" alignment="CENTER" 
+              style="-fx-padding: 20;">
+        
+        <columnConstraints>
+            <ColumnConstraints percentWidth="33" minWidth="280" maxWidth="400"/>
+            <ColumnConstraints percentWidth="33" minWidth="280" maxWidth="400"/>
+            <ColumnConstraints percentWidth="33" minWidth="280" maxWidth="400"/>
+        </columnConstraints>
+
+        <!-- Columna 1: Ventas -->
+        <VBox spacing="10" alignment="CENTER_LEFT" 
+              style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);"
+              GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <VBox spacing="8">
+                <Label text="💰 Ventas" 
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                <Label text="Registra y gestiona las ventas realizadas" 
+                       style="-fx-font-size: 13px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true;"/>
+            </VBox>
+            <Button text="Acceder" onAction="#abrirVentas" 
+                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 25; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- Columna 2: Inventario de Productos -->
+        <VBox spacing="10" alignment="CENTER_LEFT" 
+              style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);"
+              GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <VBox spacing="8">
+                <Label text="📦 Inventario" 
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #9b59b6;"/>
+                <Label text="Consulta y administra el stock de productos" 
+                       style="-fx-font-size: 13px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true;"/>
+            </VBox>
+            <Button text="Acceder" onAction="#abrirInventario" 
+                    style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 25; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- Columna 3: Historial de Movimientos -->
+        <VBox spacing="10" alignment="CENTER_LEFT" 
+              style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);"
+              GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <VBox spacing="8">
+                <Label text="📋 Historial" 
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1abc9c;"/>
+                <Label text="Revisa el historial completo de transacciones" 
+                       style="-fx-font-size: 13px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true;"/>
+            </VBox>
+            <Button text="Acceder" onAction="#abrirHistorial" 
+                    style="-fx-background-color: #1abc9c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 25; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+        </VBox>
+    </GridPane>
+
+    <!-- Botón Cerrar Sesión -->
+    <Button text="🚪 Cerrar Sesión" onAction="#cerrarSesion" 
+            style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 12 40; -fx-font-size: 14px; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 10;"/>
+</VBox>

@@ -5,14 +5,16 @@ public class Ingresos {
     private int idIngreso;  // Igual al idTransaccion
     private String metodoPago; // Efectivo / Transferencia / Datafono
     private String concepto;   // Habitacion / Cafeteria / ConsumoExterno
+    private double monto;      // Monto del ingreso
 
     public Ingresos() {
     }
 
-    public Ingresos(int idIngreso, String metodoPago, String concepto) {
+    public Ingresos(int idIngreso, String metodoPago, String concepto, double monto) {
         this.idIngreso = idIngreso;
         this.metodoPago = metodoPago;
         this.concepto = concepto;
+        this.monto = monto;
     }
 
     public int getIdIngreso() {
@@ -39,8 +41,16 @@ public class Ingresos {
         this.concepto = concepto;
     }
 
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
     @Override
     public String toString() {
-        return "Ingreso ID=" + idIngreso + ", " + concepto + ", Pago: " + metodoPago;
+        return "Ingreso ID=" + idIngreso + ", " + concepto + ", Pago: " + metodoPago + ", Monto: $" + monto;
     }
 }

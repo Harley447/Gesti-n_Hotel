@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="8.171" tests="20" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="23"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/target/test-classes:/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/target/classes:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-controls/21.0.1/javafx-controls-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-controls/21.0.1/javafx-controls-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-fxml/21.0.1/javafx-fxml-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-fxml/21.0.1/javafx-fxml-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-graphics/21.0.1/javafx-graphics-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-graphics/21.0.1/javafx-graphics-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-base/21.0.1/javafx-base-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-base/21.0.1/javafx-base-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-media/21.0.1/javafx-media-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-media/21.0.1/javafx-media-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/com/jfoenix/jfoenix/9.0.10/jfoenix-9.0.10.jar:/home/arley-mantilla/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/home/arley-mantilla/.m2/repository/org/slf4j/slf4j-simple/2.0.13/slf4j-simple-2.0.13.jar:/home/arley-mantilla/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/home/arley-mantilla/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/arley-mantilla/.m2/repository/one/xingyi/json/1.1/json-1.1.jar:/home/arley-mantilla/.m2/repository/org/json/json/20180813/json-20180813.jar:/home/arley-mantilla/.m2/repository/one/xingyi/rest/1.1/rest-1.1.jar:/home/arley-mantilla/.m2/repository/one/xingyi/rest/1.1/rest-1.1-tests.jar:/home/arley-mantilla/.m2/repository/com/google/zxing/core/3.5.3/core-3.5.3.jar:/home/arley-mantilla/.m2/repository/com/google/zxing/javase/3.5.2/javase-3.5.2.jar:/home/arley-mantilla/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/home/arley-mantilla/.m2/repository/com/github/jai-imageio/jai-imageio-core/1.4.0/jai-imageio-core-1.4.0.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.3/junit-jupiter-api-5.10.3.jar:/home/arley-mantilla/.m2/repository/org/junit/platform/junit-platform-commons/1.10.3/junit-platform-commons-1.10.3.jar:/home/arley-mantilla/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.3/junit-jupiter-params-5.10.3.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.3/junit-jupiter-engine-5.10.3.jar:/home/arley-mantilla/.m2/repository/org/junit/platform/junit-platform-engine/1.10.3/junit-platform-engine-1.10.3.jar:/home/arley-mantilla/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/home/arley-mantilla/.m2/repository/org/mockito/mockito-core/2.2.5/mockito-core-2.2.5.jar:/home/arley-mantilla/.m2/repository/net/bytebuddy/byte-buddy/1.4.33/byte-buddy-1.4.33.jar:/home/arley-mantilla/.m2/repository/net/bytebuddy/byte-buddy-agent/1.4.33/byte-buddy-agent-1.4.33.jar:/home/arley-mantilla/.m2/repository/org/objenesis/objenesis/2.4/objenesis-2.4.jar:/home/arley-mantilla/.m2/repository/org/mockito/mockito-inline/5.2.0/mockito-inline-5.2.0.jar:"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="23"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/temurin-23-jdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/target/surefire/surefirebooter-20251122180032720_3.jar /home/arley-mantilla/NetBeansProjects/Gestion_Hotel/target/surefire 2025-11-22T18-00-32_532-jvmRun1 surefire-20251122180032720_1tmp surefire_0-20251122180032720_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest"/>
+    <property name="surefire.test.class.path" value="/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/target/test-classes:/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/target/classes:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-controls/21.0.1/javafx-controls-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-controls/21.0.1/javafx-controls-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-fxml/21.0.1/javafx-fxml-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-fxml/21.0.1/javafx-fxml-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-graphics/21.0.1/javafx-graphics-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-graphics/21.0.1/javafx-graphics-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-base/21.0.1/javafx-base-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-base/21.0.1/javafx-base-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-media/21.0.1/javafx-media-21.0.1.jar:/home/arley-mantilla/.m2/repository/org/openjfx/javafx-media/21.0.1/javafx-media-21.0.1-linux.jar:/home/arley-mantilla/.m2/repository/com/jfoenix/jfoenix/9.0.10/jfoenix-9.0.10.jar:/home/arley-mantilla/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/home/arley-mantilla/.m2/repository/org/slf4j/slf4j-simple/2.0.13/slf4j-simple-2.0.13.jar:/home/arley-mantilla/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/home/arley-mantilla/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/arley-mantilla/.m2/repository/one/xingyi/json/1.1/json-1.1.jar:/home/arley-mantilla/.m2/repository/org/json/json/20180813/json-20180813.jar:/home/arley-mantilla/.m2/repository/one/xingyi/rest/1.1/rest-1.1.jar:/home/arley-mantilla/.m2/repository/one/xingyi/rest/1.1/rest-1.1-tests.jar:/home/arley-mantilla/.m2/repository/com/google/zxing/core/3.5.3/core-3.5.3.jar:/home/arley-mantilla/.m2/repository/com/google/zxing/javase/3.5.2/javase-3.5.2.jar:/home/arley-mantilla/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/home/arley-mantilla/.m2/repository/com/github/jai-imageio/jai-imageio-core/1.4.0/jai-imageio-core-1.4.0.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.3/junit-jupiter-api-5.10.3.jar:/home/arley-mantilla/.m2/repository/org/junit/platform/junit-platform-commons/1.10.3/junit-platform-commons-1.10.3.jar:/home/arley-mantilla/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.3/junit-jupiter-params-5.10.3.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.3/junit-jupiter-engine-5.10.3.jar:/home/arley-mantilla/.m2/repository/org/junit/platform/junit-platform-engine/1.10.3/junit-platform-engine-1.10.3.jar:/home/arley-mantilla/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/arley-mantilla/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/home/arley-mantilla/.m2/repository/org/mockito/mockito-core/2.2.5/mockito-core-2.2.5.jar:/home/arley-mantilla/.m2/repository/net/bytebuddy/byte-buddy/1.4.33/byte-buddy-1.4.33.jar:/home/arley-mantilla/.m2/repository/net/bytebuddy/byte-buddy-agent/1.4.33/byte-buddy-agent-1.4.33.jar:/home/arley-mantilla/.m2/repository/org/objenesis/objenesis/2.4/objenesis-2.4.jar:/home/arley-mantilla/.m2/repository/org/mockito/mockito-inline/5.2.0/mockito-inline-5.2.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/arley-mantilla"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-01-21"/>
+    <property name="java.home" value="/usr/lib/jvm/temurin-23-jdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/arley-mantilla/NetBeansProjects/Gestion_Hotel"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/home/arley-mantilla/NetBeansProjects/Gestion_Hotel/target/surefire/surefirebooter-20251122180032720_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="23.0.2+7"/>
+    <property name="user.name" value="arley-mantilla"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.14.0-35-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-23.0.2+7"/>
+    <property name="maven.ext.class.path" value="/snap/netbeans/138/netbeans/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="localRepository" value="/home/arley-mantilla/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="23.0.2"/>
+    <property name="user.dir" value="/home/arley-mantilla/NetBeansProjects/Gestion_Hotel"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="23.0.2+7"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="67.0"/>
+  </properties>
+  <testcase name="testSimularAgregarAlCarrito_NoNumerico" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="1.45">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzUtMzczNzUiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzNX0.IoRjPHZ5uly_98DyFuLXUIPnZjiAX_uiD7Sm9x67CvI
+]]></system-out>
+  </testcase>
+  <testcase name="testCalcularTotal_CarritoVacio" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.365">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzUtMzIxOTkiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzNX0.pUv4NDTacG34zPDjYAlr6FsXASGbgp3qjwvi-xOQH_s
+]]></system-out>
+  </testcase>
+  <testcase name="testItemCarritoGetSubtotal" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.355">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzUtMzk3MDciLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzNX0.WnT_GuNI4S12fCuDS9Ww8jUDto5nSq-3IDewTBE5Uck
+]]></system-out>
+  </testcase>
+  <testcase name="testCalcularTotal_ConProductos" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.352">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzYtNjA5NDYiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzNn0.MmFKIxFDIMrIDHm-nfhT3QC__9ShJoAgAJ2mPb3YBiM
+]]></system-out>
+  </testcase>
+  <testcase name="testItemCarritoCantidadCero" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.336">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzYtOTc0NzUiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzNn0.meHjAKZUyi2GS1m5eLL8ZabYrFSNER3C69TQjBvGbLA
+]]></system-out>
+  </testcase>
+  <testcase name="testSimularAgregarAlCarrito_Negativo" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.335">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzctNzQwMzMiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzN30.GkWYcXwXn3qOkzMEAd7Ei11O9nCvnkFtaCBR7A9sJQM
+]]></system-out>
+  </testcase>
+  <testcase name="testLimitesStockComplejosSinUI" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.327">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzctMTMwMzUiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzN30.xS0NPIzKnygeOdXt5uPyMDqDpttbykmKVEUyLq8qHr4
+]]></system-out>
+  </testcase>
+  <testcase name="testEscenarioCompletoSinUI" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.32">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzctNTMzMzYiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzN30.rzFoz7CX1rxzaDal_7LC70FkV5nDNqMr_0WqZy7abNo
+]]></system-out>
+  </testcase>
+  <testcase name="testSimularAgregarAlCarrito_ProductoExistente" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.367">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzctMTM5NjUiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzN30.wWF3hrHGNxgyExmvyxEdJjTd2BkOS7G4CxeHKAjKFqo
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarEntradaNumerica" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.319">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzgtNjI3NDgiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzOH0.8oVnW4uzjeuDL41vKtqgQ2HO5hbtCOeUwLAoUw5hqvI
+]]></system-out>
+  </testcase>
+  <testcase name="testLogicaEliminarCero" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.366">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzgtMzc3MTkiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzOH0.nc_oYg6HDSdN69bPGsTQiVqDpetwoxb51gTNAZ_Q-zc
+]]></system-out>
+  </testcase>
+  <testcase name="testLogicaEliminarDelCarrito" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.359">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzktOTk0MzgiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzOX0.LTlBVl4PRH5ehKmPOz4PL92lHDYmkshjldwPmE-QDT8
+]]></system-out>
+  </testcase>
+  <testcase name="testSimularAgregarAlCarrito_Cero" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.327">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzktNDgyODAiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzOX0.8mBnZJNjoBDilscyv3aCKaROaVX8i7PBhZ-vlFAzmXQ
+]]></system-out>
+  </testcase>
+  <testcase name="testSimularAgregarAlCarrito_Valido" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.389">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0MzktMzIyNTgiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjAzOX0.VZJ86TGLTRvYB0gIeQ5cy-kjd2MbUnbl5IwHJOuaKEg
+]]></system-out>
+  </testcase>
+  <testcase name="testLogicaValidacionStockModificar" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.368">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0NDAtNDg5OTYiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjA0MH0.5u6PC1OqlPhm1zgVShFPKSBRfKvtYcEMYtm3zLbSYVQ
+]]></system-out>
+  </testcase>
+  <testcase name="testLogicaIncrementarCantidad" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.319">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0NDAtODkxNDYiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjA0MH0.rZTOB3nmUgsOLyWpCf4I3sDBfAVl_QkKOSK49JCH6Qw
+]]></system-out>
+  </testcase>
+  <testcase name="testLogicaDecrementarCantidad" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.362">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0NDAtMTM2NjEiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjA0MH0.nKpQppV_MvT2TflWeGr-px7NezgyclB2mvJ5ZMyvqbc
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarCantidadPositiva" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.374">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0NDEtMjYyODQiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjA0MX0.EXMgQlEcKfLtvCpRfx_tNlpOJXDK-cEDM__q0hAuuvg
+]]></system-out>
+  </testcase>
+  <testcase name="testSimularAgregarAlCarrito_StockInsuficiente" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.339">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0NDEtNTg0ODkiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjA0MX0.4iPX1ZUQJIKcFhEOSgAYkyMnWiZrP3eBrqdiuL4UPCM
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarStockSuficiente" classname="com.mycompany.gestion_hotel.ui.VentasControllerCompleteTest" time="0.336">
+    <system-out><![CDATA[Acceptance Token CORRECTO: eyJhbGciOiJIUzI1NiJ9.eyJjb250cmFjdF9pZCI6NDcyLCJwZXJtYWxpbmsiOiJodHRwczovL3dvbXBpLmNvbS9hc3NldHMvZG93bmxvYWRibGUvcmVnbGFtZW50by1Vc3Vhcmlvcy1Db2xvbWJpYS5wZGYiLCJmaWxlX2hhc2giOiJkYzJkNGUzMDVlNGQzNmFhYjhjYzU3N2I1YTY5Nzg1MSIsImppdCI6IjE3NjM4NTI0NDEtNzgwNjIiLCJlbWFpbCI6IiIsImV4cCI6MTc2Mzg1NjA0MX0.E6yUHFsOQDvh3fQgTNwwQCjhraTy7X5UfMEke0SWsGU
+]]></system-out>
+  </testcase>
+</testsuite>

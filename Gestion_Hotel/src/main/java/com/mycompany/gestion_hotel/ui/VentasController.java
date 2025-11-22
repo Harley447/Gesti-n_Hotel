@@ -45,7 +45,7 @@ public class VentasController implements Initializable {
     private Map<String, Image> cacheImagenes = new ConcurrentHashMap<>();
     private Set<String> imagenesCargando = Collections.synchronizedSet(new HashSet<>());
 
-    private class ItemCarrito {
+    public class ItemCarrito {
         Producto producto;
         int cantidad;
         public ItemCarrito(Producto producto, int cantidad) {
@@ -57,7 +57,7 @@ public class VentasController implements Initializable {
         }
     }
 
-    private List<ItemCarrito> itemsCarrito;
+    public List<ItemCarrito> itemsCarrito;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,7 +74,7 @@ public class VentasController implements Initializable {
         actualizarVistaProductos();
     }
 
-    private void cargarProductos() {
+    public void cargarProductos() {
         // Obtener todos los productos y filtrar los que no son de bodega
         List<Producto> todosProductos = productoDAO.listarProductos();
         productosDisponibles = new ArrayList<>();
@@ -91,7 +91,7 @@ public class VentasController implements Initializable {
                           " (excluyendo bodega)");
     }
 
-    private void actualizarVistaProductos() {
+    public void actualizarVistaProductos() {
         contenedorProductos.getChildren().clear();
         contenedorProductos.setSpacing(15);
         contenedorProductos.setPadding(new Insets(10));
@@ -257,7 +257,7 @@ public class VentasController implements Initializable {
         c.getChildren().add(iv);
     }
 
-    private void agregarAlCarrito(Producto producto) {
+    public void agregarAlCarrito(Producto producto) {
         TextInputDialog dialog = new TextInputDialog("1");
         dialog.setHeaderText("Cantidad para: " + producto.getNombre());
         Optional<String> r = dialog.showAndWait();
@@ -297,7 +297,7 @@ public class VentasController implements Initializable {
         }
     }
 
-    private void actualizarVistaCarrito() {
+    public void actualizarVistaCarrito() {
         contenedorCarrito.getChildren().clear();
 
         if (itemsCarrito.isEmpty()) {
@@ -356,7 +356,7 @@ public class VentasController implements Initializable {
         return h;
     }
 
-    private void modificarCantidad(ItemCarrito item, int cambio) {
+    public void modificarCantidad(ItemCarrito item, int cambio) {
         int nuevaCantidad = item.cantidad + cambio;
 
         if (nuevaCantidad <= 0) {
@@ -375,7 +375,7 @@ public class VentasController implements Initializable {
         actualizarVistaCarrito();
     }
 
-    private void eliminarDelCarrito(ItemCarrito item) {
+    public void eliminarDelCarrito(ItemCarrito item) {
         itemsCarrito.remove(item);
         actualizarVistaCarrito();
     }
@@ -453,7 +453,7 @@ public class VentasController implements Initializable {
         }
     }
 
-    private double calcularTotal() {
+    public double calcularTotal() {
         return itemsCarrito.stream().mapToDouble(ItemCarrito::getSubtotal).sum();
     }
 

@@ -146,53 +146,7 @@ public class GenerarReporteController implements Initializable {
         }
     }
 
-    @FXML
-    public void guardarReporte() {
-        if (lista.isEmpty()) {
-            mostrarAlerta("No hay transacciones para guardar en el reporte.");
-            return;
-        }
 
-        // Obtener fechas
-        LocalDate ldInicio = dpFechaInicio.getValue();
-        LocalDate ldFin = dpFechaFin.getValue();
-        Date sqlInicio = Date.valueOf(ldInicio);
-        Date sqlFin = Date.valueOf(ldFin);
-
-        // Tipo calculado al consultar
-        String tipoReporte = (String) btnGuardar.getUserData();
-        if (tipoReporte == null) tipoReporte = "Completo";
-
-        // Crear objeto Reporte y guardarlo, obteniendo el id generado
-        Reporte reporte = new Reporte();
-        reporte.setTipo(tipoReporte);
-        reporte.setFechaInicio(sqlInicio);
-        reporte.setFechaFin(sqlFin);
-        reporte.setGeneradoPor(ID_GENERADO_POR);
-
-        // Usamos método que inserta y devuelve id (ver nota en DAO)
-        int idReporte = reporteDAO.insertarReporteYObtenerID(reporte);
-        if (idReporte <= 0) {
-            mostrarAlerta("Error al guardar el reporte.");
-            return;
-        }
-
-        // Guardar cada detalle
-        boolean todoOk = true;
-        for (Transacciones t : lista) {
-            DetalleReporte detalle = new DetalleReporte(idReporte, t.getIdTransaccion());
-            boolean ok = detalleDAO.insertarDetalle(detalle);
-            if (!ok) {
-                todoOk = false;
-            }
-        }
-
-        if (todoOk) {
-            mostrarInfo("Reporte guardado correctamente (id=" + idReporte + ").");
-        } else {
-            mostrarAlerta("El reporte se guardó pero hubo errores al insertar algunos detalles.");
-        }
-    }
 
     private void mostrarAlerta(String mensaje) {
         Alert a = new Alert(Alert.AlertType.WARNING);

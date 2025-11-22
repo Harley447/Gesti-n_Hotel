@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.gestion_hotel.ui.HistorialController">
+
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Filtrar por tipo:" style="-fx-font-size: 16px;"/>
+            <ComboBox fx:id="cbFiltroTipo" prefWidth="150"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaHistorial" prefHeight="600" prefWidth="800">
+            <columns>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150"/>
+                <TableColumn fx:id="colMonto" text="Monto" prefWidth="120"/>
+                <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="300"/>
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

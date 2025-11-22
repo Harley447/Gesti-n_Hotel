@@ -9,20 +9,18 @@
     <groupId>com.mycompany</groupId>
     <artifactId>Gestion_Hotel</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>Gestion_Hotel</name>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <javafx.version>21.0.2</javafx.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javafx.version>21.0.1</javafx.version>
         <mainClass>com.mycompany.gestion_hotel.Gestion_Hotel</mainClass>
     </properties>
 
     <dependencies>
-        <!-- ✅ JavaFX Modules -->
+
+        <!-- JavaFX sin classifier (sí existen en Maven Central) -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -43,21 +41,20 @@
             <artifactId>javafx-base</artifactId>
             <version>${javafx.version}</version>
         </dependency>
-        <!-- JavaFX Media (para imágenes) -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
             <version>${javafx.version}</version>
         </dependency>
 
-        <!-- ✅ JFoenix -->
+        <!-- JFoenix -->
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
             <version>9.0.10</version>
         </dependency>
 
-        <!-- ✅ SLF4J -->
+        <!-- SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -69,36 +66,37 @@
             <version>2.0.13</version>
         </dependency>
 
-        <!-- ✅ MySQL -->
+        <!-- MySQL -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.0.33</version>
         </dependency>
+
+        <!-- JSON -->
         <dependency>
             <groupId>one.xingyi</groupId>
             <artifactId>json</artifactId>
             <version>1.1</version>
-            <type>jar</type>
-        </dependency>
-        
-        <dependency>
-    <groupId>com.google.zxing</groupId>
-    <artifactId>core</artifactId>
-    <version>3.5.3</version>
-            <type>jar</type>
         </dependency>
 
-<dependency>
-    <groupId>com.google.zxing</groupId>
-    <artifactId>javase</artifactId>
-    <version>3.5.2</version>
-</dependency>
+        <!-- ZXing -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.5.2</version>
+        </dependency>
 
     </dependencies>
 
     <build>
         <plugins>
+
             <!-- Compilador -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -110,17 +108,7 @@
                 </configuration>
             </plugin>
 
-            <!-- ✅ JavaFX plugin para ejecutar -->
-            <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
-                <configuration>
-                    <mainClass>${mainClass}</mainClass>
-                </configuration>
-            </plugin>
-
-            <!-- ✅ Maven Shade Plugin para crear JAR ejecutable -->
+            <!-- Crear JAR standalone -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -141,6 +129,8 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
+
 </project>

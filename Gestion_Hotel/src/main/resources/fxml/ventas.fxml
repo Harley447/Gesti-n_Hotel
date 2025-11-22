@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -27,14 +28,11 @@
         </VBox>
     </left>
 
-    <!-- Panel central -->
+    <!-- Panel central - SIMPLIFICADO -->
     <center>
-        <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #ecf0f1; -fx-background-radius: 10;">
-            <Label text="Productos Disponibles" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2d3436;"/>
-            <ScrollPane fitToWidth="true" prefHeight="600" style="-fx-background: transparent;">
-                <VBox fx:id="contenedorProductos" spacing="10" style="-fx-padding: 10;"/>
-            </ScrollPane>
-        </VBox>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-border-color: transparent;">
+            <VBox fx:id="contenedorProductos" spacing="15" style="-fx-padding: 20;"/>
+        </ScrollPane>
     </center>
 
     <!-- Panel derecho -->

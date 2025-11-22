@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.gestion_hotel.ui.VentasController"
+            style="-fx-background-color: linear-gradient(to bottom, #f5f6fa, #dfe6e9);">
+
+    <!-- Panel izquierdo -->
+    <left>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #74b9ff; -fx-background-radius: 10;">
+            <Label text="Filtrar por Ubicación" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <CheckBox fx:id="chkVitrina" text="Vitrina" style="-fx-text-fill: white;"/>
+            <CheckBox fx:id="chkNevera" text="Nevera" style="-fx-text-fill: white;"/>
+            <CheckBox fx:id="chkHeladera" text="Heladera" style="-fx-text-fill: white;"/>
+            <Button text="Aplicar Filtro" onAction="#aplicarFiltro"
+                    style="-fx-background-color: #0984e3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </VBox>
+    </left>
+
+    <!-- Panel central -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #ecf0f1; -fx-background-radius: 10;">
+            <Label text="Productos Disponibles" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2d3436;"/>
+            <ScrollPane fitToWidth="true" prefHeight="600" style="-fx-background: transparent;">
+                <VBox fx:id="contenedorProductos" spacing="10" style="-fx-padding: 10;"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <!-- Panel derecho -->
+    <right>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #55efc4; -fx-background-radius: 10;">
+            <Label text="Carrito de Compras" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2d3436;"/>
+            
+            <ScrollPane fitToWidth="true" prefHeight="400" style="-fx-background: transparent;">
+                <VBox fx:id="contenedorCarrito" spacing="10" style="-fx-padding: 10;"/>
+            </ScrollPane>
+            
+            <Separator/>
+            
+            <VBox spacing="5">
+                <Label text="Total:" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2d3436;"/>
+                <Label fx:id="lblTotal" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+            </VBox>
+            
+            <Separator/>
+            
+            <Label text="Método de Pago" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2d3436;"/>
+            <RadioButton fx:id="rbEfectivo" text="Efectivo" style="-fx-text-fill: #2d3436;"/>
+            <RadioButton fx:id="rbTransferencia" text="Transferencia" style="-fx-text-fill: #2d3436;"/>
+            
+            <Separator/>
+            
+            <Button text="Finalizar Venta" fx:id="btnFinalizarVenta" onAction="#finalizarVenta"
+                    style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            
+            <!-- Imagen QR -->
+            <ImageView fx:id="imgQR" fitWidth="200" fitHeight="200" preserveRatio="true"/>
+        </VBox>
+    </right>
+</BorderPane>

@@ -75,11 +75,26 @@ public class VentasController implements Initializable {
     }
 
     private void cargarProductos() {
-        productosDisponibles = productoDAO.listarProductos();
+        // Obtener todos los productos y filtrar los que no son de bodega
+        List<Producto> todosProductos = productoDAO.listarProductos();
+        productosDisponibles = new ArrayList<>();
+        
+        for (Producto producto : todosProductos) {
+            // Excluir productos con ubicación "Bodega" (case insensitive)
+            if (producto.getUbicacion() != null && 
+                !producto.getUbicacion().equalsIgnoreCase("Bodega")) {
+                productosDisponibles.add(producto);
+            }
+        }
+        
+        System.out.println("Productos cargados: " + productosDisponibles.size() + 
+                          " (excluyendo bodega)");
     }
 
     private void actualizarVistaProductos() {
         contenedorProductos.getChildren().clear();
+        contenedorProductos.setSpacing(15);
+        contenedorProductos.setPadding(new Insets(10));
 
         if (productosDisponibles.isEmpty()) {
             Label lblVacio = new Label("No hay productos disponibles");
@@ -88,97 +103,106 @@ public class VentasController implements Initializable {
             return;
         }
 
-        GridPane grid = new GridPane();
-        grid.setHgap(15);
-        grid.setVgap(15);
-        grid.setPadding(new Insets(10));
-
-        int col = 0, row = 0;
-        int maxCols = 3;
+        // Usar FlowPane en lugar de GridPane para mejor flexibilidad
+        FlowPane flowPane = new FlowPane();
+        flowPane.setHgap(15);
+        flowPane.setVgap(15);
+        flowPane.setPadding(new Insets(10));
+        flowPane.setPrefWrapLength(800); // Ancho preferido antes de hacer wrap
 
         for (Producto p : productosDisponibles) {
             VBox productoCard = crearTarjetaProducto(p);
-            grid.add(productoCard, col, row);
-            col++;
-            if (col >= maxCols) {
-                col = 0;
-                row++;
-            }
+            flowPane.getChildren().add(productoCard);
         }
 
-        contenedorProductos.getChildren().add(grid);
+        contenedorProductos.getChildren().add(flowPane);
     }
 
     private VBox crearTarjetaProducto(Producto producto) {
-    VBox card = new VBox(10);
-    card.setAlignment(Pos.TOP_CENTER);
-    card.setStyle("-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; "
-                 + "-fx-border-color: #dfe6e9; -fx-border-radius: 10;");
-    card.setPrefWidth(200);
-    card.setMinHeight(300);
-    card.setMaxHeight(300);
+        VBox card = new VBox(8); // Reducir spacing
+        card.setAlignment(Pos.TOP_CENTER);
+        card.setStyle("-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 12; "
+                     + "-fx-border-color: #dfe6e9; -fx-border-radius: 10; -fx-border-width: 1;");
+        card.setPrefWidth(180);
+        card.setMaxWidth(180);
 
-    StackPane imagenContainer = crearContenedorImagen(producto);
+        StackPane imagenContainer = crearContenedorImagen(producto);
 
-    Label lblNombre = new Label(producto.getNombre());
-    lblNombre.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
-    lblNombre.setWrapText(true);
-    lblNombre.setAlignment(Pos.CENTER);
-    lblNombre.setMaxWidth(160);
+        // NOMBRE DEL PRODUCTO - Asegurar que sea visible
+        Label lblNombre = new Label(producto.getNombre());
+        lblNombre.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;");
+        lblNombre.setWrapText(true);
+        lblNombre.setAlignment(Pos.CENTER);
+        lblNombre.setMaxWidth(150);
+        lblNombre.setMinHeight(40);
+        lblNombre.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-    Label lblPrecio = new Label(String.format("$%,.0f", producto.getPrecio()));
-    lblPrecio.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #27ae60;");
+        Label lblPrecio = new Label(String.format("$%,.0f", producto.getPrecio()));
+        lblPrecio.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #27ae60;");
 
-    Label lblStock = new Label("Stock: " + producto.getCantidad());
-    lblStock.setStyle("-fx-text-fill: #7f8c8d;");
+        Label lblStock = new Label("Stock: " + producto.getCantidad());
+        lblStock.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 12px;");
+        
+        // Mostrar ubicación para debug
+        Label lblUbicacion = new Label("Ubic: " + producto.getUbicacion());
+        lblUbicacion.setStyle("-fx-text-fill: #3498db; -fx-font-size: 10px;");
 
-    Button btnAgregar = new Button("Agregar al Carrito");
-    btnAgregar.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
-    btnAgregar.setPrefWidth(150);
+        Button btnAgregar = new Button("Agregar al Carrito");
+        btnAgregar.setStyle("-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;");
+        btnAgregar.setPrefWidth(140);
+        btnAgregar.setMinHeight(35);
 
-    btnAgregar.setOnAction(e -> agregarAlCarrito(producto));
+        btnAgregar.setOnAction(e -> agregarAlCarrito(producto));
 
-    if (producto.getCantidad() <= 0) {
-        btnAgregar.setDisable(true);
-        btnAgregar.setText("Sin Stock");
+        if (producto.getCantidad() <= 0) {
+            btnAgregar.setDisable(true);
+            btnAgregar.setText("Sin Stock");
+            btnAgregar.setStyle("-fx-background-color: #95a5a6; -fx-text-fill: white;");
+        }
+
+        VBox.setMargin(imagenContainer, new Insets(0, 0, 5, 0));
+        VBox.setMargin(lblNombre, new Insets(5, 0, 5, 0));
+        VBox.setMargin(btnAgregar, new Insets(10, 0, 0, 0));
+
+        card.getChildren().addAll(imagenContainer, lblNombre, lblPrecio, lblStock, lblUbicacion, btnAgregar);
+
+        return card;
     }
 
-    card.getChildren().setAll(imagenContainer, lblNombre, lblPrecio, lblStock, btnAgregar);
+    private StackPane crearContenedorImagen(Producto p) {
+        StackPane container = new StackPane();
+        container.setPrefSize(120, 120);
+        container.setMinSize(120, 120);
+        container.setMaxSize(120, 120);
+        container.setStyle("-fx-background-color: #f8f9fa; -fx-background-radius: 8;");
 
-    return card;
-}
+        crearPlaceholderImagen(container);
 
+        if (p.tieneImagen()) cargarImagenEnSegundoPlano(p, container);
 
-   private StackPane crearContenedorImagen(Producto p) {
-    StackPane container = new StackPane();
-    container.setPrefSize(140, 140);
-    container.setMinSize(140, 140);
-    container.setMaxSize(140, 140);
-    container.setStyle("-fx-background-color: #f8f9fa; -fx-background-radius: 8;");
-
-    crearPlaceholderImagen(container);
-
-    if (p.tieneImagen()) cargarImagenEnSegundoPlano(p, container);
-
-    return container;
-}
-
+        return container;
+    }
 
     private void crearPlaceholderImagen(StackPane c) {
-        Rectangle r = new Rectangle(120, 120);
+        Rectangle r = new Rectangle(100, 100);
         r.setFill(Color.web("#ecf0f1"));
         r.setStroke(Color.web("#bdc3c7"));
         r.setArcWidth(8);
         r.setArcHeight(8);
 
-        Label l = new Label("Cargando...");
-        l.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 12px;");
+        Label l = new Label("Sin imagen");
+        l.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 11px;");
 
         c.getChildren().addAll(r, l);
     }
 
     private void cargarImagenEnSegundoPlano(Producto p, StackPane container) {
         String url = p.getImagenUrl();
+        
+        if (url == null || url.trim().isEmpty()) {
+            System.out.println("URL de imagen vacía para: " + p.getNombre());
+            return;
+        }
 
         if (cacheImagenes.containsKey(url)) {
             actualizarImagenEnUI(container, cacheImagenes.get(url));
@@ -190,32 +214,48 @@ public class VentasController implements Initializable {
 
         new Thread(() -> {
             try {
-                Image img = new Image(url, 120, 120, true, true, true);
+                System.out.println("Cargando imagen para: " + p.getNombre() + " - URL: " + url);
+                Image img = new Image(url, 100, 100, true, true, true);
+                
                 if (!img.isError()) {
                     cacheImagenes.put(url, img);
-                    javafx.application.Platform.runLater(() -> actualizarImagenEnUI(container, img));
+                    javafx.application.Platform.runLater(() -> {
+                        actualizarImagenEnUI(container, img);
+                        System.out.println("✓ Imagen cargada: " + p.getNombre());
+                    });
+                } else {
+                    System.out.println("✗ Error cargando imagen: " + url);
+                    javafx.application.Platform.runLater(() -> {
+                        container.getChildren().clear();
+                        Rectangle errorRect = new Rectangle(100, 100);
+                        errorRect.setFill(Color.web("#ff6b6b"));
+                        Label errorLabel = new Label("Error");
+                        errorLabel.setStyle("-fx-text-fill: white; -fx-font-size: 11px;");
+                        container.getChildren().addAll(errorRect, errorLabel);
+                    });
                 }
+            } catch (Exception e) {
+                System.out.println("Excepción cargando imagen: " + e.getMessage());
             } finally {
                 imagenesCargando.remove(url);
             }
         }).start();
     }
 
-   private void actualizarImagenEnUI(StackPane c, Image img) {
-    c.getChildren().clear();
-    ImageView iv = new ImageView(img);
-    iv.setFitWidth(140);
-    iv.setFitHeight(140);
-    iv.setPreserveRatio(true);
+    private void actualizarImagenEnUI(StackPane c, Image img) {
+        c.getChildren().clear();
+        ImageView iv = new ImageView(img);
+        iv.setFitWidth(120);
+        iv.setFitHeight(120);
+        iv.setPreserveRatio(true);
 
-    Rectangle clip = new Rectangle(140, 140);
-    clip.setArcWidth(8);
-    clip.setArcHeight(8);
-    iv.setClip(clip);
+        Rectangle clip = new Rectangle(120, 120);
+        clip.setArcWidth(8);
+        clip.setArcHeight(8);
+        iv.setClip(clip);
 
-    c.getChildren().add(iv);
-}
-
+        c.getChildren().add(iv);
+    }
 
     private void agregarAlCarrito(Producto producto) {
         TextInputDialog dialog = new TextInputDialog("1");
@@ -261,7 +301,9 @@ public class VentasController implements Initializable {
         contenedorCarrito.getChildren().clear();
 
         if (itemsCarrito.isEmpty()) {
-            contenedorCarrito.getChildren().add(new Label("El carrito está vacío"));
+            Label lblVacio = new Label("El carrito está vacío");
+            lblVacio.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 14px;");
+            contenedorCarrito.getChildren().add(lblVacio);
             lblTotal.setText("$0");
             return;
         }
@@ -285,8 +327,11 @@ public class VentasController implements Initializable {
         info.setPrefWidth(180);
 
         Label lblNombre = new Label(item.producto.getNombre());
+        lblNombre.setStyle("-fx-font-weight: bold; -fx-text-fill: #2c3e50;");
         Label lblDetalles = new Label("Cantidad: " + item.cantidad + " x $" + item.producto.getPrecio());
+        lblDetalles.setStyle("-fx-text-fill: #666; -fx-font-size: 12px;");
         Label lblSubtotal = new Label("Subtotal: $" + item.getSubtotal());
+        lblSubtotal.setStyle("-fx-font-weight: bold; -fx-text-fill: #27ae60;");
 
         info.getChildren().addAll(lblNombre, lblDetalles, lblSubtotal);
 
@@ -294,12 +339,15 @@ public class VentasController implements Initializable {
         controles.setAlignment(Pos.CENTER_RIGHT);
 
         Button btnMenos = new Button("-");
+        btnMenos.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-min-width: 30;");
         btnMenos.setOnAction(e -> modificarCantidad(item, -1));
 
         Button btnMas = new Button("+");
+        btnMas.setStyle("-fx-background-color: #27ae60; -fx-text-fill: white; -fx-min-width: 30;");
         btnMas.setOnAction(e -> modificarCantidad(item, 1));
 
         Button btnEliminar = new Button("×");
+        btnEliminar.setStyle("-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-min-width: 30;");
         btnEliminar.setOnAction(e -> eliminarDelCarrito(item));
 
         controles.getChildren().addAll(btnMenos, btnMas, btnEliminar);
@@ -341,14 +389,20 @@ public class VentasController implements Initializable {
         boolean c = chkHeladera.isSelected();
 
         if (!a && !b && !c) {
-            productosDisponibles = productoDAO.listarProductos();
+            // Al no tener filtros activos, mostrar todos los productos excepto bodega
+            cargarProductos();
         } else {
-            for (Producto p : productoDAO.listarProductos()) {
-                if ((a && "Vitrina".equalsIgnoreCase(p.getUbicacion())) ||
-                    (b && "Nevera".equalsIgnoreCase(p.getUbicacion())) ||
-                    (c && "Heladera".equalsIgnoreCase(p.getUbicacion()))) {
+            // Aplicar filtros sobre todos los productos (incluyendo verificación de bodega)
+            List<Producto> todosProductos = productoDAO.listarProductos();
+            for (Producto p : todosProductos) {
+                // Excluir productos de bodega primero
+                if (p.getUbicacion() != null && !p.getUbicacion().equalsIgnoreCase("Bodega")) {
+                    if ((a && "Vitrina".equalsIgnoreCase(p.getUbicacion())) ||
+                        (b && "Nevera".equalsIgnoreCase(p.getUbicacion())) ||
+                        (c && "Heladera".equalsIgnoreCase(p.getUbicacion()))) {
 
-                    filtrados.add(p);
+                        filtrados.add(p);
+                    }
                 }
             }
             productosDisponibles = filtrados;

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.gestion_hotel.ui.ProveedorController">
+
+    <top>
+        <Label text="Gestión de Proveedores"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10;" />
+    </top>
+
+    <center>
+        <TableView fx:id="tablaProveedores" prefHeight="300">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="60" />
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150" />
+                <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="150" />
+                <TableColumn fx:id="colCorreo" text="Correo" prefWidth="200" />
+                <TableColumn fx:id="colTipoServicio" text="Tipo Servicio" prefWidth="150" />
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="12">
+
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="20"/>
+                    <ColumnConstraints percentWidth="80"/>
+                </columnConstraints>
+
+                <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Teléfono:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtTelefono" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Correo:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtCorreo" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Tipo Servicio:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtTipoServicio" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Guardar" fx:id="btnGuardar" onAction="#guardarProveedor"/>
+                <Button text="Editar" fx:id="btnEditar" onAction="#editarProveedor"/>
+                <Button text="Eliminar" fx:id="btnEliminar" onAction="#eliminarProveedor"/>
+            </HBox>
+
+        </VBox>
+    </bottom>
+
+</BorderPane>

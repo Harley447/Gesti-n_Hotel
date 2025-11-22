@@ -22,7 +22,7 @@
                 <Label text="Fecha fin:"/>
                 <DatePicker fx:id="dpFechaFin"/>
                 <Button text="Consultar" fx:id="btnConsultar" onAction="#consultarTransacciones"/>
-                <Button text="Guardar Reporte" fx:id="btnGuardar" onAction="#guardarReporte"/>
+            
             </HBox>
 
             <TableView fx:id="tvTransacciones" prefHeight="360">
